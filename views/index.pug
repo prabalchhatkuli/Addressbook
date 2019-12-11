@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+    head
+        title Contact Addressbook
+    
+    //-boy contains form
+    body
+        //-form does not currently have divs, ids and clases mentioned
+        form(method='post')
+            #prefix
+                input(type='radio', name='gender', value='mr', checked)
+                label Mr.
+                input(type='radio', name='gender', value='mrs' )
+                label Mrs.
+                input(type='radio', name='gender', value='ms' )
+                label Ms.
+                input(type='radio', name='gender', value='dr' )
+                label Dr.
+            
+            #name
+                label First name: 
+                input(type='text', name='firstname')
+                label Last name: 
+                input(type='text', name='lastname')
+            
+            #address
+                label Street: 
+                input(type='text', name='street')
+                label City: 
+                input(type='text', name='city')
+                label State:
+                select(name='state')
+                    option(value='nj') NJ
+                    option(value='ny') NY
+                    option(value='pa') PA
+                    option(value='ct') CT
+                label Zip:
+                input(type='text', name='zip')
+            
+            #contact
+                label Phone
+                input(type='tel', name='phone' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}')
+                label Email: input(type='email', name='email')
+            
+            #review
+                label How may we contact you?
+                input(type='checkbox', name='contactByPhone' value='Phone')
+                label Phone
+                input(type='checkbox', name='contactByMail', value='Mail')
+                label Mail
+                input(type='checkbox', name='contactByEmail', value='Email')
+                label Email
+                input(type='checkbox', naem='contactByAny', value='Any', checked)
+                label Any
+            
+            input(type='submit' value='Send me spam forever!')
+            
