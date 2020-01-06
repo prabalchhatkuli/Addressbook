@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+	head
+		link(rel="stylesheet", href="/stylesheets/style.css")
+	body
+		div('class'='addressbook')
+			h1 AddressBook
+		ul(class='sidebar')
+				li: a(href='/index') Add Contact
+				li: a(href='/contacts') View Contacts
+		section#contactform
+			H3 Submitted Successfully!
+			H3 Thank you! 
+			H2 Have a nice day :)
+
+			p The following response was recorded:
+			//-create a response field to render the passed json object
+			p Name: #{singleContact.prefix} #{singleContact.firstName} #{singleContact.lastName}
+			p Address: #{singleContact.street}, #{singleContact.city}, #{singleContact.state}, #{singleContact.zip}
+			p Contact by Phone: #{singleContact.contactByPhone}
+			p Contact by Mail: #{singleContact.contactByMail}
+			p Contact by E-mail: #{singleContact.contactByEmail}
+
+			a(href='/index') Add another contact
+			br
+			a(href='/contacts') View Existing Contacts

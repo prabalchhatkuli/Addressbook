@@ -1,0 +1,130 @@
+doctype html
+html(lang="en")
+    head
+        title Contact Addressbook
+        link(rel="stylesheet", href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css", integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==', crossorigin='')
+        link(rel="stylesheet", type='text/css', href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css')
+        link(rel='stylesheet', href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css', type='text/css')
+        //-script(src='https://unpkg.com/leaflet@1.6.0/dist/leaflet.js', integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==', crossorigin='')
+        script(src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js')
+        script(src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.js')
+        //- this section of code focuses on getting the model used to render the page and the model is later used on evaluating and rendering other 
+            part of code
+        script(type='text/javascript').
+            let x = !{JSON.stringify(dbcontents)}
+        link(rel="stylesheet", href="/stylesheets/style.css")
+    body
+        div('class'='addressbook')
+            h1 AddressBook
+        ul(class='sidebar')
+            li: a(href='/index') Add Contact
+            li: a(href='/contacts') View Contacts
+            li: a(href='/logout') Logout
+        //------------------------------------------------------------initial read section------------------------------------------
+        section#read
+            div#mainBar
+                h1 List of contacts
+                div#searchbar
+                    div#FirstNameInput
+                        input#FirstInputBox(type="text" placeholder="Search First Names")
+                    div#LastNameInput
+                        input#LastInputBox(type="text" placeholder="Search Last Names")
+            div#tablecontainer
+                table
+                    thead
+                        tr
+                            th Prefix
+                            th First Name
+                            th Last Name
+                            th Street
+                            th City
+                            th State
+                            th Zip
+                            th Phone
+                            th Email
+                            th By phone
+                            th By mail
+                            th By email
+                            th Update
+                            th Delete
+                    tbody#tableBody
+                        each contact in dbcontents
+                            tr(data-contactId=contact['_id'])
+                                td(class='removeOnUpdate') #{contact.prefix}
+                                td(class="removeOnUpdate firstName") #{contact.firstName}
+                                td(class="removeOnUpdate lastName") #{contact.lastName}
+                                td(class='removeOnUpdate') #{contact.street}
+                                td(class='removeOnUpdate') #{contact.city}
+                                td(class='removeOnUpdate') #{contact.state}
+                                td(class='removeOnUpdate') #{contact.zip}
+                                td(class='removeOnUpdate') #{contact.phone}
+                                td(class='removeOnUpdate') #{contact.email}
+                                td(class='removeOnUpdate') #{contact.contactByPhone}
+                                td(class='removeOnUpdate') #{contact.contactByMail}
+                                td(class='removeOnUpdate') #{contact.contactByEmail}
+                                td: button(type='button', class='updateButton',name='update', value='update') update
+                                td: button(type='button', class='deleteButton' name='delete', value='delete') delete
+                        else
+                            p There are no contacts to display
+            div#mapContainer
+                div#mapid
+        //-------------------------------delete confirmation section--------------------------------------------
+        section#confirmDelete
+            h4 Are you sure you want to delete this contact?
+            div(style={display:'inline-block'})
+                button(type='button',value='delete', id='confirmDeletion') Agree
+                button(type='button',value='cancel', id='cancelDeletion') Cancel
+        //- -----------------------------this section loaded upon update button pressed--------------------------------------           
+        section#update
+            form(action='/', method='post', id='updateForm')
+                    input(type='radio', name='prefix', value='Mr.', checked)
+                    label Mr.
+                    input(type='radio', name='prefix', value='Mrs.' )
+                    label Mrs.
+                    input(type='radio', name='prefix', value='Ms.' )
+                    label Ms.
+                    input(type='radio', name='prefix', value='Dr.' )
+                    label Dr.
+                    br
+                    label First name: 
+                    input(type='text', name='firstName', placeholder='John')
+                    label Last name: 
+                    input(type='text', name='lastName', placeholder='Smith')
+                    br
+                    label Street: 
+                    input(type='text', name='street', placeholder='505 Ramapo Valley road')
+                    label City: 
+                    input(type='text', name='city', placeholder='New York')
+                    label State:
+                    select(name='state')
+                        option(value='NJ') NJ
+                        option(value='NY') NY
+                        option(value='PA') PA
+                        option(value='CT') CT
+                    label Zip:
+                    input(type='text', name='zip', placeholder='XXXXX',pattern="[0-9]{5}")
+                    br
+                    label Phone
+                    input(type='tel', name='phone', pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='XXX-XXX-XXXX')
+                    //-input(type='text', name='phone')
+                    label Email:
+                    input(type='email', name='email', placeholder="someone@something.something")
+                    br
+                    label How may we contact you?
+                    input(type='checkbox', name='contactByPhone', value='Phone')
+                    label Phone
+                    input(type='checkbox', name='contactByMail', value='Mail')
+                    label Mail
+                    input(type='checkbox', name='contactByEmail', value='Email')
+                    label Email
+                    input(type='checkbox', name='contactByAny', value='Any', checked)
+                    label Any
+                    br
+                    br
+                    input(type='button', value='Update', id='confirmUpdate')
+                    input(type='button', value='Cancel', id='cancelUpdate')
+    //------------------------------------------------------------------------------------------------------------------------------
+    footer
+        script(src='javascripts/map.js')
+        

@@ -1,8 +1,178 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+*{
+  font-family: sans-serif;
+}
+.addressbook{
+    background-color: #daf153;
+    color: #8a0e29;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 100%;
 }
 
-a {
-  color: #00B7FF;
+
+#mapContainer {
+  height: 200px;
+  width:100%;
 }
+
+#mapid{
+  margin: 20px;
+  padding: 10px;
+  border-color: #66cdaa;
+  border-style: solid;
+  width: 80%;
+  height: 40%;
+  position: absolute;
+}
+
+body {
+  font-family: sans-serif;
+	font-weight: 100;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  background-color: #f1f1f1;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+}
+
+section {
+  margin-left:140px;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/*for the table-----------------------------------------------------------------------------*/
+#tablecontainer {
+  height: 200px;
+  width:100%;
+  overflow-x:auto;
+  overflow-y: auto;
+}
+
+table {
+  width: 95%;
+  height: 100%;
+  border-collapse: collapse;
+  	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 5px;
+	background-color: rgba(255,255,255,0.2);
+	color:black;
+}
+
+th {
+	text-align: left;
+}
+
+
+thead	th {
+		background-color: #55608f;
+	  }
+
+
+
+	tbody tr:hover {
+    background-color: rgba(23, 102, 175, 0.26);
+    cursor: pointer;
+  }
+
+	tbody td {
+    position: relative;
+  }
+
+  /*-----------------------------------------------------------------------------------------------------------*/
+  /* Style inputs with type="text", select elements and textareas */
+
+#contactForm {
+  width: 60%;
+	top: 50%;
+	left: 50%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+#update {
+  width: 60%;
+	top: 50%;
+	left: 50%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+#FirstNameInput {
+  float: left;
+}
+#LastNameInput {
+  float: right;
+}
+#searchbar {
+  display: inline-block;
+}
+
+input[type=text],input[type=email],input[type=password], input[type=tel], select, textarea, #confirmDeletion, #cancelDeletion {
+  width: 100%; /* Full width */
+  padding: 5px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 6px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=button],input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 30%;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=button]:hover, input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */

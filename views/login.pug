@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    head
+        title Addressbook -login
+        link(rel="stylesheet", href="/stylesheets/style.css")
+    body
+        div('class'='addressbook')
+            h1 AddressBook
+        ul(class='sidebar')
+            li: a(href='/index') Add Contact
+        section#contactForm
+            div
+                p Please enter the credentials to login
+            
+            form(action='login', method='post')
+                div
+                    p
+                        label Username:
+                        input(type="text", name="username")
+                    p
+                        label Password:
+                        input(type="password", name="password")
+                    button(type='submit') login

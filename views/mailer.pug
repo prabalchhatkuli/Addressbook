@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+    head
+        title Contact Addressbook
+        link(rel="stylesheet", href="/stylesheets/style.css")
+    //-boy contains form
+    body
+        div(class='addressbook')
+            h1 AddressBook
+        ul(class='sidebar')
+            li: a(href='/index') Add Contact
+            li: a(href='/contacts') View Contacts
+        //-form does not currently have divs, ids and clases mentioned
+        section#contactForm
+            form(action='/mailer' method='post')
+                    label Prefix:
+                    input(type='radio', name='prefix', value='Mr.', checked)
+                    label Mr.
+                    input(type='radio', name='prefix', value='Mrs.' )
+                    label Mrs.
+                    input(type='radio', name='prefix', value='Ms.' )
+                    label Ms.
+                    input(type='radio', name='prefix', value='Dr.' )
+                    label Dr.
+                    br
+                    label First name: 
+                    input(type='text', name='firstName', placeholder='John')
+                    label Last name: 
+                    input(type='text', name='lastName', placeholder='Smith')
+                    br
+                    label Street: 
+                    input(type='text', name='street', placeholder='505 Ramapo Valley road')
+                    label City: 
+                    input(type='text', name='city', placeholder='New York')
+                    label State:
+                    select(name='state')
+                        option(value='NJ') NJ
+                        option(value='NY') NY
+                        option(value='PA') PA
+                        option(value='CT') CT
+                    label Zip:
+                    input(type='text', name='zip', placeholder='XXXXX',pattern="[0-9]{5}")
+                    br
+                    label Phone
+                    input(type='tel', name='phone', pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='XXX-XXX-XXXX')
+                    //-input(type='text', name='phone')
+                    label Email:
+                    input(type='email', name='email', placeholder="someone@something.something")
+                    br
+                    label How may we contact you?
+                    input(type='checkbox', name='contactByPhone', value='Phone')
+                    label Phone
+                    input(type='checkbox', name='contactByMail', value='Mail')
+                    label Mail
+                    input(type='checkbox', name='contactByEmail', value='Email')
+                    label Email
+                    input(type='checkbox', name='contactByAny', value='Any', checked)
+                    label Any
+                    br
+                    br
+                    input(type='submit' value='Send me spam forever!')
+
+
+        a(href='/contacts') Contact List
+            
